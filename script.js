@@ -15,18 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const hotspots = document.querySelectorAll('.hotspot');
   const tooltip = document.getElementById('tooltip');
-  
+
   const sounds = {
     'hands-off': new Audio('sounds/voice/hands-off.mp3'),
     'dragon-poke': new Audio('sounds/voice/dragon-poke.mp3')
   };
-  sounds['hands-off'].volume = 0.9;
+  sounds['hands-off'].volume = 0.7;
   sounds['dragon-poke'].volume = 1.0;
 
   hotspots.forEach(spot => {
     spot.dataset.clickCount = 0;
     spot.dataset.originalSound = spot.dataset.sound;
-    
+
     const originalSound = new Audio(spot.dataset.originalSound);
     originalSound.volume = parseFloat(spot.dataset.volume) || 1.0;
 
@@ -41,20 +41,27 @@ document.addEventListener('DOMContentLoaded', () => {
     spot.addEventListener('mouseleave', () => {
       tooltip.style.display = 'none';
     });
-
     spot.addEventListener('click', () => {
       let count = parseInt(spot.dataset.clickCount, 10);
       count++;
-      
+
       if (spot.id === 'dragon-img') {
         handleDragonClick(spot, count, originalSound);
+      } else if (spot.id === 'island') {
+        handleIslandClick(spot, count, originalSound);
       } else {
         handleTreeClick(spot, count, originalSound);
       }
-      
+
       spot.dataset.clickCount = count;
     });
+
+
   });
+  function handleIslandClick(spot, count, sound) {
+    sound.currentTime = 0;
+    sound.play();
+  }
 
   function handleTreeClick(spot, count, sound) {
     const cycle = count % 4;
@@ -72,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function handleDragonClick(spot, count, sleepingSound) {
     const dragonImg = spot;
-    
+
     if (count % 4 === 1) {
       sleepingSound.currentTime = 0;
       sleepingSound.play();
@@ -92,10 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           dragonImg.src = 'images/dragon-attack.png';
           dragonImg.style.opacity = '1';
-          
+
           const fireball = document.getElementById('fireball');
           fireball.classList.add('animate');
-          
+
           const overlay = document.getElementById('fire-overlay');
           setTimeout(() => {
             overlay.style.display = 'block';
@@ -113,20 +120,20 @@ document.addEventListener('DOMContentLoaded', () => {
           fireball.addEventListener('animationend', () => {
             fireball.classList.remove('animate');
           }, { once: true });
-          
+
           attackCount++;
           counterElement.innerText = attackCount;
           localStorage.setItem("dragonAttackCount", attackCount);
         }, 500);
       }
     } else {
-       sleepingSound.currentTime = 0;
-       sleepingSound.play();
-       dragonImg.style.opacity = '0';
-       setTimeout(() => {
-          dragonImg.src = 'images/dragon-sleeping.png';
-          dragonImg.style.opacity = '1';
-       }, 500);
+      sleepingSound.currentTime = 0;
+      sleepingSound.play();
+      dragonImg.style.opacity = '0';
+      setTimeout(() => {
+        dragonImg.src = 'images/dragon-sleeping.png';
+        dragonImg.style.opacity = '1';
+      }, 500);
     }
   }
 });
