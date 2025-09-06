@@ -2,46 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Splorgon 5 — Even Better than Splorgon 4!</title>
+  <title>Splorgon 5 — Peninsula of Dragons</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>Welcome to Splorgon 5!</h1>
-    <p class="tagline">Even better than Splorgon 4 🌿🐉</p>
+    <p class="tagline">Where ruins meet dragons 🐉🌊</p>
   </header>
 
+  <!-- ================== SCENE ================== -->
+  <div class="scene">
+    <!-- Background Peninsula -->
+    <div class="background">
+      <img src="images/bg-peninsula.png" alt="Dragon Peninsula Background">
+      <div class="mist"></div>
+    </div>
 
-  <!-- Background -->
-  <div class="background">
-    <img src="images/jungle-bg.png" alt="Splorgon Jungle Background">
-    <div class="mist"></div>
+    <!-- Interactive Elements -->
+    <div class="interactive">
+      <img src="images/tree-left.png" 
+           class="hotspot" 
+           data-rune="Old left tree whispers of Splorgon 3…" 
+           data-sound="sounds/tree-left.mp3"
+           style="top:55%; left:10%; width:150px;">
+      
+      <img src="images/tree-middle.png" 
+           class="hotspot" 
+           data-rune="Middle tree hides dragon hatchlings…" 
+           data-sound="sounds/tree-middle.mp3"
+           style="top:35%; left:60%; width:180px;">
+      
+      <img src="images/tree-right.png" 
+           class="hotspot" 
+           data-rune="Right tree marks the dragon’s lookout…" 
+           data-sound="sounds/tree-right.mp3"
+           style="top:40%; left:80%; width:140px;">
+      
+      <img src="images/east-island.png" 
+           class="hotspot" 
+           data-rune="Beyond the east island lies the Splorgon sea…" 
+           data-sound="sounds/east-island.mp3"
+           style="top:70%; left:85%; width:160px;">
+      
+      <img src="images/west-island.png" 
+           class="hotspot" 
+           data-rune="West island holds ruins of Splorgon 4…" 
+           data-sound="sounds/west-island.mp3"
+           style="top:68%; left:5%; width:160px;">
+      
+      <img src="images/dragon-sleeping.png" 
+           class="hotspot" 
+           data-rune="A sleeping dragon stirs with each visitor…" 
+           data-sound="sounds/dragon-sleeping.mp3"
+           style="top:65%; left:40%; width:220px;">
+    </div>
+
+    <!-- Rune Tooltip -->
+    <div id="tooltip"></div>
   </div>
 
-  <!-- Interactive Plants -->
-  <div class="plants">
-    <img src="images/plant1.png" class="plant" data-rune="Splorgon Dragon was here…" style="top:65%; left:20%;">
-    <img src="images/plant2.png" class="plant" data-rune="Beware the jungle’s whispers…" style="top:72%; left:60%;">
-    <img src="images/plant3.png" class="plant" data-rune="Runes glow when the dragon stirs…" style="top:55%; left:40%;">
-  </div>
-
-  <!-- Navigation Arrows -->
-  <a href="scene23.html" class="arrow left">
-    <img src="images/arrow-left.png" alt="Go West – Western Upside-Down Island">
-  </a>
-  <a href="scene37.html" class="arrow right">
-    <img src="images/arrow-right.png" alt="Go East – Eastern Upside-Down Island">
-  </a>
-
-  <!-- Back Button -->
-  <a href="scene86.html" class="back-button">
-    <img src="images/back-button.png" alt="Back to Fancy-Plants Forest">
-  </a>
-
-  <!-- Rune Tooltip -->
-  <div id="tooltip"></div>
-
-  <main>
+  <!-- ================== CONTENT ================== -->
+  <main class="content">
     <section class="intro">
       <p>
         Splorgon 5 is the lush jungle successor to Splorgon 4, offering more plants, 
@@ -91,7 +113,6 @@
     </section>
   </main>
 
-  <div class="dragon"></div>
   <script src="script.js"></script>
 </body>
 </html>

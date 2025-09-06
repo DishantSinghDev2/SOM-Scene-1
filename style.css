@@ -14,6 +14,51 @@ body {
   overflow-x: hidden;
 }
 
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-style: italic;
+  color: #baffc9;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #baffc9; }
+  to { text-shadow: 0 0 15px #00ff99; }
+}
+
+/* ================== SCENE ================== */
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen scene */
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.interactive img.hotspot {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.interactive img.hotspot:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px gold);
+}
+
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
 .background img {
   position: absolute;
   width: 100%;
@@ -71,6 +116,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   transition: transform 0.3s ease;
+  z-index: 5;
 }
 
 .arrow.left { left: 20px; }
@@ -85,39 +131,39 @@ body {
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Back Button */
-.back-button {
+/* Dragon silhouette */
+.dragon {
   position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  left: -200px;
+  width: 150px;
+  height: 100px;
+  background: url('https://i.imgur.com/7Xq8d6O.png') no-repeat center/contain;
+  opacity: 0.5;
+  animation: fly 15s linear infinite;
 }
 
-.back-button img {
-  width: 180px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+@keyframes fly {
+  0% { left: -200px; top: 50%; }
+  50% { left: 50%; top: 30%; }
+  100% { left: 120%; top: 60%; }
 }
 
-.back-button img:hover {
-  transform: scale(1.05) rotate(-2deg);
+/* ================== CONTENT ================== */
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(10, 40, 20, 0.8);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 100, 0.3);
 }
 
-
-header {
+.content h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #aaffaa;
   text-align: center;
-  margin-bottom: 20px;
-}
-
-.tagline {
-  font-style: italic;
-  color: #baffc9;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 5px #baffc9; }
-  to { text-shadow: 0 0 15px #00ff99; }
 }
 
 table {
@@ -144,24 +190,6 @@ a {
 a:hover {
   text-decoration: underline;
   color: #00ffaa;
-}
-
-/* Dragon silhouette */
-.dragon {
-  position: fixed;
-  top: 50%;
-  left: -200px;
-  width: 150px;
-  height: 100px;
-  background: url('https://i.imgur.com/7Xq8d6O.png') no-repeat center/contain;
-  opacity: 0.5;
-  animation: fly 15s linear infinite;
-}
-
-@keyframes fly {
-  0% { left: -200px; top: 50%; }
-  50% { left: 50%; top: 30%; }
-  100% { left: 120%; top: 60%; }
 }
 
 .counter {
