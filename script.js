@@ -15,3 +15,24 @@ window.addEventListener("keydown", (e) => {
     input = [];
   }
 });
+
+
+// Tooltip for rune text
+const plants = document.querySelectorAll('.plant');
+const tooltip = document.getElementById('tooltip');
+
+plants.forEach(plant => {
+  plant.addEventListener('mouseenter', e => {
+    tooltip.innerText = plant.dataset.rune;
+    tooltip.style.display = 'block';
+  });
+
+  plant.addEventListener('mousemove', e => {
+    tooltip.style.left = (e.pageX + 15) + 'px';
+    tooltip.style.top = (e.pageY - 20) + 'px';
+  });
+
+  plant.addEventListener('mouseleave', e => {
+    tooltip.style.display = 'none';
+  });
+});
