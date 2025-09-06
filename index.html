@@ -11,64 +11,58 @@
     <p class="tagline">Better than Splorgon 4! 🐉🌊</p>
   </header>
 
-  <!-- ================== SCENE ================== -->
+  <!-- The scene stuff -->
   <div class="scene">
-    <!-- Background Peninsula -->
     <div class="background">
       <img src="images/bg-peninsula.png" alt="Dragon Peninsula Background">
       <div class="mist"></div>
     </div>
 
-    <!-- Interactive Elements -->
     <div class="interactive">
       <img src="images/tree-left.png" 
            class="hotspot" 
-           data-rune="Old left tree whispers of Splorgon 3…" 
-           data-sound="sounds/voice/tree-left.mp3"
-           style="top:28%; left:15%; width:190px;">
+           data-rune="I can see some Making of Summer...? on the other side" 
+           data-sound="sounds/voice/left-tree.mp3"
+           data-volume="0.6"
+           style="top:30%; left:15%; width:15vw;">
       
       <img src="images/tree-middle.png" 
            class="hotspot" 
-           data-rune="Middle tree hides dragon hatchlings…" 
-           data-sound="sounds/voice/tree-middle.mp3"
-           style="top:25%; left:60%; width:320px;">
+           data-rune="Shhhh.... Don't poke this guy 👇" 
+           data-sound="sounds/voice/middle-tree.mp3"
+           data-volume="0.7"
+           style="top:25%; left:60%; width:25vw;">
       
       <img src="images/tree-right.png" 
            class="hotspot" 
-           data-rune="Right tree marks the dragon’s lookout…" 
-           data-sound="sounds/voice/tree-right.mp3"
-           style="bottom:-3%; right:-25%; width:580px;">
-      
-      <!-- <img src="images/island.png" 
-           class="hotspot" 
-           data-rune="Beyond the east island lies the Scene 37…" 
-           data-sound="sounds/voice/east-island.mp3"
-           style="top:33%; right:-5%; width:260px;">
-      
-      <img src="images/island.png" 
-           class="hotspot" 
-           data-rune="Behold Scene 23" 
-           data-sound="sounds/voice/west-island.mp3"
-           style="top:18%; right:-25%; width:460px;"> -->
+           data-rune="Zzzzzz.... huh?" 
+           data-sound="sounds/voice/right-tree.mp3"
+           data-volume="1.0"
+           style="bottom:-3%; right:-25%; width:45vw;">
       
       <img src="images/dragon-sleeping.png" 
+           id="dragon-img"
            class="hotspot" 
-           data-rune="A sleeping dragon stirs with each visitor…" 
+           data-rune="I waaan...aa eaaa...t mooor...e" 
            data-sound="sounds/voice/dragon-sleeping.mp3"
-           style="bottom:-3%; right:27%; width:360px;">
+           data-volume="0.9"
+           style="bottom:-3%; right:27%; width:32vw;">
+      
+      <div id="fireball"></div>
     </div>
 
-    <!-- Rune Tooltip -->
     <div id="tooltip"></div>
   </div>
 
-  <!-- ================== CONTENT ================== -->
+  <div id="fire-overlay"></div>
+
+  <!-- Reading stuff -->
   <main class="content">
     <section class="intro">
       <p>
         Splorgon 5 is the lush jungle successor to Splorgon 4, offering more plants, 
         more mystery, and significantly more dragon sightings. Truly, it’s even better 
-        than Splorgon 4.
+        than Splorgon 4. (Low bar, but hey, we cleared it.)
       </p>
     </section>
 
@@ -76,25 +70,26 @@
       <h2>Statistics</h2>
       <table>
         <tr><td>Population</td><td>~0 (dragons ate them)</td></tr>
-        <tr><td>Area</td><td>~5,000 leafy ft²</td></tr>
-        <tr><td>Currency</td><td>Dragon Scales</td></tr>
+        <tr><td>Area</td><td>~5,000 leafy ft² (measured in vines, very scientific)</td></tr>
+        <tr><td>Currency</td><td>Dragon Scales (non-refundable)</td></tr>
         <tr><td>Language</td><td>Splorgish (raccoon chittering dialect)</td></tr>
         <tr><td>Timezone</td><td>Dragon Standard Time (DST)</td></tr>
-        <tr><td>Local Time</td><td>@404.5 (lost in jungle)</td></tr>
-        <tr><td>Climate</td><td>Overgrown Tropical</td></tr>
-        <tr><td>Flag</td><td>A green leaf with claw marks</td></tr>
+        <tr><td>Local Time</td><td>404 (lost in jungle)</td></tr>
+        <tr><td>Climate</td><td>Overgrown Tropical (extra sweaty)</td></tr>
+        <tr><td>Flag</td><td>A green leaf with claw marks (ironically shredded)</td></tr>
       </table>
     </section>
 
     <section class="news">
       <h2>News</h2>
       <ul>
+        <li><strong>2001-09-06</strong>: Archaeologists are now visiting Splorgon 5. Oh oh oh noooo, not meee, noooo… [gulp]</li>
         <li><strong>2001-07-01</strong>: Archaeologists uncover ruins of Splorgon 4. They were unimpressed.</li>
         <li><strong>2001-05-22</strong>: Jungle vines begin teaching basic HTML.</li>
-        <li><strong>2001-03-11</strong>: Dragon spotted sunbathing on eastern canopy.</li>
-        <li><strong>2000-12-31</strong>: Splorgon 5 avoids Y2K bug thanks to being offline entirely.</li>
+        <li><strong>2001-03-11</strong>: Dragon spotted sunbathing on eastern canopy. SPF 9000 confirmed.</li>
+        <li><strong>2000-12-31</strong>: Splorgon 5 avoids Y2K bug thanks to being offline entirely. Flex.</li>
         <li><strong>2000-10-01</strong>: Explorer reported hearing plants whisper “better than Splorgon 4.”</li>
-        <li><strong>2000-06-15</strong>: Forest Council adopts Dragon Scales as official currency.</li>
+        <li><strong>2000-06-15</strong>: Forest Council adopts Dragon Scales as official currency. Exchange rate: 1 scale = 1 regret.</li>
       </ul>
     </section>
 
@@ -109,7 +104,7 @@
     </section>
 
     <section class="counter">
-      <p>Dragon sightings so far: <span id="counter">0</span></p>
+      <p>Dragon attacks so far: <span id="counter">0</span></p>
     </section>
   </main>
 

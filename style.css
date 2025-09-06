@@ -5,7 +5,6 @@ body, h1, h2, p, ul, li, table, td {
   font-family: "Courier New", monospace;
 }
 
-/* Base Layout */
 body {
   background: linear-gradient(to bottom, #1b4d2c, #0a2915);
   color: #e0ffe0;
@@ -30,30 +29,11 @@ header {
   to { text-shadow: 0 0 15px #00ff99; }
 }
 
-/* ================== SCENE ================== */
+/* scene stuff */
 .scene {
   position: relative;
   width: 100%;
-  height: 100vh; /* Full screen scene */
-  overflow: hidden;
-  margin-bottom: 40px;
-}
-
-.interactive img.hotspot {
-  position: absolute;
-  cursor: pointer;
-  transition: filter 0.3s ease;
-}
-
-.interactive img.hotspot:hover {
-  filter: drop-shadow(0 0 12px gold);
-}
-
-
-.scene {
-  position: relative;
-  width: 100%;
-  height: 500px;
+  height: 100vh; 
   overflow: hidden;
   margin-bottom: 40px;
 }
@@ -66,7 +46,7 @@ header {
   z-index: -2;
 }
 
-/* Mist Overlay */
+/* water vapour all around */
 .mist {
   position: absolute;
   top: 0; left: 0;
@@ -82,22 +62,20 @@ header {
   to { background-position: 200px 0; }
 }
 
-/* Plants */
-.plant {
+.interactive img.hotspot {
   position: absolute;
-  width: 120px;
   cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.5s ease;
+  min-width: 120px;
 }
 
-.plant:hover {
-  transform: scale(1.1) rotate(2deg);
-  filter: drop-shadow(0 0 10px limegreen);
+.interactive img.hotspot:hover {
+  filter: drop-shadow(0 0 12px gold);
 }
 
-/* Tooltip */
+/* for your sake */
 #tooltip {
-  position: absolute;
+  position: fixed;
   padding: 8px 12px;
   background: rgba(0,0,0,0.7);
   border: 1px solid #44ff88;
@@ -106,49 +84,58 @@ header {
   display: none;
   pointer-events: none;
   white-space: nowrap;
-  z-index: 10;
+  z-index: 9999;
 }
 
-/* Arrows */
-.arrow {
+/* I didn't wanted to, but he thretened me :( */
+#fireball {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: transform 0.3s ease;
-  z-index: 5;
+  bottom: 18%;
+  right: 43%;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ffcc00, #ff6600, transparent 70%);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
 }
 
-.arrow.left { left: 20px; }
-.arrow.right { right: 20px; }
-
-.arrow img {
-  width: 80px;
-  cursor: pointer;
+#fireball.animate {
+  animation: shootFireballAtUser 1.5s ease-in forwards;
 }
 
-.arrow:hover {
-  transform: translateY(-50%) scale(1.1);
+@keyframes shootFireballAtUser {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-10vw, -5vh) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-45vw, -40vh) scale(150);
+    opacity: 0;
+  }
 }
 
-/* Dragon silhouette */
-.dragon {
-  position: absolute;
-  top: 50%;
-  left: -200px;
-  width: 150px;
-  height: 100px;
-  background: url('https://i.imgur.com/7Xq8d6O.png') no-repeat center/contain;
-  opacity: 0.5;
-  animation: fly 15s linear infinite;
+#fire-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(255, 255, 200, 0.8) 0%, rgba(255, 150, 0, 0.7) 50%, rgba(255, 50, 0, 0.6) 100%);
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+  transition: opacity 0.3s ease-out; /* Controls fade-out speed */
 }
 
-@keyframes fly {
-  0% { left: -200px; top: 50%; }
-  50% { left: 50%; top: 30%; }
-  100% { left: 120%; top: 60%; }
-}
-
-/* ================== CONTENT ================== */
+/* content css */
 .content {
   max-width: 800px;
   margin: 0 auto;
@@ -168,7 +155,8 @@ header {
 table {
   border-collapse: collapse;
   margin: 10px auto;
-  width: 80%;
+  width: 100%;
+  max-width: 500px;
 }
 
 td {
@@ -178,7 +166,7 @@ td {
 
 .news ul, .links ul {
   list-style: square;
-  margin-left: 40px;
+  padding-left: 40px;
 }
 
 a {
