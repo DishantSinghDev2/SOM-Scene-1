@@ -1,0 +1,81 @@
+/* Reset */
+body, h1, h2, p, ul, li, table, td {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", monospace;
+}
+
+body {
+  background: linear-gradient(to bottom, #1b4d2c, #0a2915);
+  color: #e0ffe0;
+  line-height: 1.5;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-style: italic;
+  color: #baffc9;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #baffc9; }
+  to { text-shadow: 0 0 15px #00ff99; }
+}
+
+table {
+  border-collapse: collapse;
+  margin: 10px auto;
+  width: 80%;
+}
+
+td {
+  border: 1px solid #66bb66;
+  padding: 5px 10px;
+}
+
+.news ul, .links ul {
+  list-style: square;
+  margin-left: 40px;
+}
+
+a {
+  color: #66ffcc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #00ffaa;
+}
+
+/* Dragon silhouette */
+.dragon {
+  position: fixed;
+  top: 50%;
+  left: -200px;
+  width: 150px;
+  height: 100px;
+  background: url('https://i.imgur.com/7Xq8d6O.png') no-repeat center/contain;
+  opacity: 0.5;
+  animation: fly 15s linear infinite;
+}
+
+@keyframes fly {
+  0% { left: -200px; top: 50%; }
+  50% { left: 50%; top: 30%; }
+  100% { left: 120%; top: 60%; }
+}
+
+.counter {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #afffaf;
+}
