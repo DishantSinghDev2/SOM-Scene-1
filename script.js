@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (spot.id === 'dragon-img') {
         handleDragonClick(spot, count, originalSound);
       } else if (spot.id === 'island') {
-        handleIslandClick(spot, count, originalSound);
+        null
       } else {
         handleTreeClick(spot, count, originalSound);
       }
@@ -58,10 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   });
-  function handleIslandClick(spot, count, sound) {
-    sound.currentTime = 0;
-    sound.play();
-  }
 
   function handleTreeClick(spot, count, sound) {
     const cycle = count % 4;
